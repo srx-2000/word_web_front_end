@@ -18,6 +18,7 @@
     </div>
     <el-table
       :data="result.word_list.slice(0,page_size)"
+      height="500"
       style="width: 100%"
       ref="table">
       <el-table-column
@@ -51,7 +52,8 @@
                     v-model="word_model[scope.$index]"></el-input>
           <el-input v-else-if="!is_hide_mean" placeholder="中文含义"
                     v-model="mean_model[scope.$index]"></el-input>
-          <span v-else>待检测</span>
+          <span v-else-if="word_model[scope.$index]==undefined">待检测</span>
+          <span v-else>{{word_model[scope.$index]}}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -115,8 +117,8 @@
       }
     },
     methods: {
-      indexMethod(index){
-        return(this.current_page-1)*this.page_size +index+1;
+      indexMethod(index) {
+        return (this.current_page - 1) * this.page_size + index + 1;
       },
       date_change() {
         this.getAllWord(this.current_page, this.page_size)
@@ -136,7 +138,9 @@
       upset() {
         this.result.word_list.sort(function () {
           return .5 - Math.random();
-        })
+        });
+        this.word_model = [];
+        this.mean_model = [];
       },
       check_one(index, word_object) {
         if (word_object.word === this.word_model[index]) {
@@ -149,7 +153,9 @@
       },
       change_current_page(val) {
         this.current_page = val;
-        this.getAllWord(this.current_page, this.page_size)
+        this.getAllWord(this.current_page, this.page_size);
+        this.word_model = [];
+        this.mean_model = [];
       },
       change_size(val) {
         this.page_size = val;
