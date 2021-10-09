@@ -17,7 +17,7 @@
       </div>
     </div>
     <el-table
-      :data="result.word_list.slice((current_page-1)*page_size,current_page*page_size)"
+      :data="result.word_list.slice(0,page_size)"
       style="width: 100%"
       ref="table">
       <el-table-column
@@ -25,6 +25,7 @@
         prop="id"
         type="index"
         sortable
+        :index="indexMethod"
         width="150px"
       >
       </el-table-column>
@@ -79,8 +80,7 @@
       layout="prev, pager, next, sizes"
       :page-sizes="[30, 60, 90, 120]"
       @size-change="change_size"
-      :total="total_page"
-      :page-size="1"
+      :total="result.word_count"
       @current-change="change_current_page"
     >
     </el-pagination>
@@ -115,6 +115,9 @@
       }
     },
     methods: {
+      indexMethod(index){
+        return(this.current_page-1)*this.page_size +index+1;
+      },
       date_change() {
         this.getAllWord(this.current_page, this.page_size)
       },
