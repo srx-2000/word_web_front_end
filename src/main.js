@@ -17,7 +17,7 @@ Vue.use(VueRouter);
 // axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
 
 Vue.config.productionTip = false;
-axios.defaults.baseURL = 'http://101.34.151.80:5656';
+axios.defaults.baseURL = 'http://localhost:5656';
 Vue.use(VueAxios, axios);
 Vue.use(ElementUI, {
   size: 'small'

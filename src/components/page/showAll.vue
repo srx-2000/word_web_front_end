@@ -52,8 +52,9 @@
                     v-model="word_model[scope.$index]"></el-input>
           <el-input v-else-if="!is_hide_mean" placeholder="中文含义"
                     v-model="mean_model[scope.$index]"></el-input>
-          <span v-else-if="word_model[scope.$index]==undefined">待检测</span>
-          <span v-else>{{word_model[scope.$index]}}</span>
+          <span v-else-if="word_model[scope.$index]==undefined&&mean_model[scope.$index]==undefined">待检测</span>
+          <span v-else-if="word_model[scope.$index]!=undefined&&mean_model[scope.$index]==undefined">{{word_model[scope.$index]}}</span>
+          <span v-else-if="word_model[scope.$index]==undefined&&mean_model[scope.$index]!=undefined">{{mean_model[scope.$index]}}</span>
         </template>
       </el-table-column>
       <el-table-column
@@ -133,7 +134,7 @@
             this.result_show[i] = false
           }
         }
-        this.$message.success("本次检错共正确" + count + "个，继续加油！")
+        this.$message.success("本次检错共" + this.page_size + "个，正确" + count + "个，继续加油！")
       },
       upset() {
         this.result.word_list.sort(function () {
@@ -156,10 +157,14 @@
         this.getAllWord(this.current_page, this.page_size);
         this.word_model = [];
         this.mean_model = [];
+        this.result_show = [];
       },
       change_size(val) {
         this.page_size = val;
-        this.getAllWord(this.current_page, this.page_size)
+        this.getAllWord(this.current_page, this.page_size);
+        this.result_show = [];
+        this.word_model = [];
+        this.mean_model = [];
       },
       show_all() {
         this.is_hide_mean = true;
@@ -168,10 +173,12 @@
       hide_mean() {
         this.is_hide_mean = !this.is_hide_mean;
         this.is_hide_word = !this.is_hide_mean;
+        this.word_model = []
       },
       hide_word() {
         this.is_hide_word = !this.is_hide_word;
         this.is_hide_mean = !this.is_hide_word;
+        this.mean_model = []
       },
       getAllWord(page, pageSize) {
         if (this.user.uid != undefined) {
