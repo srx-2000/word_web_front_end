@@ -1,22 +1,23 @@
 <template>
   <div class="login-wrap">
-    <!--    <h2>英语单词本</h2>-->
+        <h2 style="background-color: white;width: 200px">仅自己与朋友共用考研学习，还望大佬们手下留情</h2>
     <div class="ms-login">
-      <h4 class="ms-title">登录</h4>
+      <h3 class="title">Beier单词本</h3>
+      <h4 class="ms-title" style="margin-top: 0px;padding-top: 0px">登录</h4>
       <el-form :model="param" :rules="rules" ref="login" label-width="0px" class="ms-content">
         <el-form-item prop="username">
-          <el-input v-model="param.username" placeholder="username">
-            <el-button slot="prepend" icon="el-icon-lx-people"></el-button>
+          <el-input v-model="param.username" placeholder="用户名">
+            <el-button slot="prepend" icon="el-icon-user"></el-button>
           </el-input>
         </el-form-item>
         <el-form-item prop="password">
           <el-input
             type="password"
-            placeholder="password"
+            placeholder="密码"
             v-model="param.password"
             @keyup.enter.native="submitForm()"
           >
-            <el-button slot="prepend" icon="el-icon-lx-lock"></el-button>
+            <el-button slot="prepend" icon="el-icon-lock"></el-button>
           </el-input>
         </el-form-item>
         <div class="login-btn">
@@ -24,6 +25,10 @@
         </div>
         <router-link to="/signUp" class="login-tips">还没有账号？点击注册</router-link>
       </el-form>
+    </div>
+    <div class="footer">
+      Copyright © {{year}}
+      <a href="https://beian.miit.gov.cn/" style="color: #6E7173;text-decoration:none;">Beier 京ICP备2021026492号</a>
     </div>
   </div>
 </template>
@@ -33,9 +38,10 @@
   export default {
     data: function () {
       return {
+        year: new Date().getFullYear(),
         param: {
-          username: 'srx',
-          password: 'srx62600',
+          username: '',
+          password: '',
         },
         rules: {
           username: [{required: true, message: '请输入用户名', trigger: 'blur'}],
@@ -62,6 +68,7 @@
               localStorage.setItem('ms_uid', response.data.user_data[1]);
               localStorage.setItem('ms_username', response.data.user_data[2]);
               localStorage.setItem('ms_password', response.data.user_data[3]);
+              localStorage.setItem('tips', true);
               this.$router.push('/');
             } else {
               this.$message.error(response.data.message);
@@ -84,9 +91,18 @@
     height: 100%;
     background-image: url(../../assets/img/login-bg.jpg);
     background-color: #F4F6F9;
-    background-size: 100%;
+    /*background-size: 100%;*/
+    background-repeat: no-repeat;
+    background-size: cover;
   }
-
+  html, body {
+    height: 100%;
+    overflow: auto;
+    margin: 0;
+  }
+  html {
+    overflow-y: auto;
+  }
   .ms-title {
     width: 100%;
     line-height: 50px;
@@ -129,5 +145,24 @@
     text-underline: blue;
     text-align: right;
     color: #3D9FFC;
+  }
+
+  .title{
+    text-align: center;
+    margin: 10px;
+    margin-bottom: 0px;
+    color: #4834d4;
+    /*border-bottom: 1px solid #ddd;*/
+
+  }
+  .footer {
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    line-height: 50px;
+    width: 100%;
+    color: #6E7173;
   }
 </style>

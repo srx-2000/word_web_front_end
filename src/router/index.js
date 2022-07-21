@@ -7,55 +7,35 @@ export default new VueRouter({
   routes: [
     {
       path: '/signIn',
-      component: () => import('../components/page/index'),
+      component: resolve => require(['@/components/page/index'], resolve),
       meta: {title: '登录'}
     },
     {
       path: '/signUp',
-      component: () => import('../components/page/register'),
+      component: resolve => require(['@/components/page/register'], resolve),
       meta: {title: '注册'}
     },
     {
       path: '/',
-      component: () => import(/* webpackChunkName: "home" */ '../components/common/Home.vue'),
-      meta: {title: '自述文件'},
+      component: resolve => require(['@/components/common/Home'], resolve),
       redirect: "/showAll",
       children: [
         {
           path: '/addWord',
-          component: () => import('../components/page/addWord'),
+          component: resolve => require(['@/components/page/addWord'], resolve),
           meta: {title: '添加单词'}
         },
-        {
-          path: '/reviewWord',
-          component: () => import('../components/page/reviewWord'),
-          meta: {title: '复习单词'}
-        },
+        // {
+        //   path: '/reviewWord',
+        //   component: resolve => require(['@/components/page/reviewWord'], resolve),
+        //   meta: {title: '复习单词'}
+        // },
         {
           path: '/showAll',
-          component: () => import('../components/page/showAll'),
+          component: resolve => require(['@/components/page/showAll'], resolve),
           meta: {title: '词库'}
         }
       ]
     },
-    // {
-    //   path: '/addWord',
-    //   component: () => import('../components/page/addWord'),
-    //   meta: {title: '添加单词'}
-    // },
-    // {
-    //   path: '/reviewWord',
-    //   component: () => import('../components/page/reviewWord'),
-    //   meta: {title: '复习单词'}
-    // },
-    // {
-    //   path: '/showAll',
-    //   component: () => import('../components/page/showAll'),
-    //   meta: {title: '已入库单词'}
-    // },
-    // {
-    //   path: '/',
-    //   redirect: "/addWord"
-    // }
   ]
 })
