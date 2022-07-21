@@ -23,35 +23,35 @@
 
 #### 首页
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/1.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/1.png)
 
 #### 注册页
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/2.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/2.png)
 
 #### 词库页
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/3.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/3.png)
 
 #### 英文检错
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/4.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/4.png)
 
 #### 中文检错
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/5.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/5.png)
 
 #### 添加单词页
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/6.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/6.png)
 
 #### 自动添加单词
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/7.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/7.png)
 
 #### 手动添加单词
 
-https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/8.png
+![](https://raw.githubusercontent.com/srx-2000/word_web_front_end/master/screenshots/8.png)
 
 ## Build Setup
 
